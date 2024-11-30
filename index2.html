@@ -1,0 +1,215 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Language Switcher</title>
+</head>
+
+<body>
+    <button id="engButton">ENG</button>
+    <button id="ruButton">RU</button>
+    <div id="content"></div>
+    <script>
+        const englishData = {
+            name: "John",
+            age: 30,
+            city: "New York",
+            occupation: "Engineer",
+            company: "TechCorp",
+            phone: "+1 555 1234",
+            email: "john.doe@example.com",
+            address: "123 Elm St",
+            education: "Bachelor's Degree",
+            hobby: "Photography",
+            favorite_food: "Pizza",
+            favorite_color: "Blue",
+            favorite_movie: "Inception",
+            favorite_book: "1984",
+            language: "English",
+            nationality: "American",
+            marital_status: "Single",
+            has_pets: true,
+            children: 0,
+            car: "Tesla Model S",
+        };
+
+        const russianData = {
+            name: "Джон",
+            age: 30,
+            city: "Нью-Йорк",
+            occupation: "Инженер",
+            company: "ТехКорп",
+            phone: "+1 555 1234",
+            email: "john.doe@пример.com",
+            address: "ул. Эльм, 123",
+            education: "Степень бакалавра",
+            hobby: "Фотография",
+            favorite_food: "Пицца",
+            favorite_color: "Синий",
+            favorite_movie: "Начало",
+            favorite_book: "1984",
+            language: "Английский",
+            nationality: "Американец",
+            marital_status: "Не женат",
+            has_pets: true,
+            children: 0,
+            car: "Тесла Модель S",
+        
+        };
+
+        function updateContent(languageData) {
+            let contentDiv = document.getElementById('content');
+            contentDiv.innerHTML = '';
+            Object.keys(languageData).forEach(key => {
+                let div = document.createElement('div');
+                div.id = key;
+                div.textContent = `${languageData[key]}`;
+                contentDiv.appendChild(div);
+            });
+        }
+
+        function setLanguageInUrl(language) {
+            let newUrl = `${window.location.pathname}?lang=${language}`;
+            window.history.pushState({ path: newUrl }, '', newUrl);
+        }
+
+        function getLanguageFromUrl() {
+            return window.location.search.split('=')[1];
+        }
+        let currentLang = getLanguageFromUrl();
+
+        if (currentLang === 'ru') {
+            updateContent(russianData);
+        } else {
+            updateContent(englishData);
+        }
+
+        document.getElementById('engButton').addEventListener('click', function () {
+            updateContent(englishData);
+            setLanguageInUrl('en');
+        });
+
+        document.getElementById('ruButton').addEventListener('click', function () {
+            updateContent(russianData);
+            setLanguageInUrl('ru');
+        });
+    </script>
+
+</body>
+
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Language Switcher</title>
+</head>
+
+<body>
+    <button id="engButton">ENG</button>
+    <button id="ruButton">RU</button>
+    <div id="content"></div>
+
+    <script>
+        const englishData = {
+            name: "John",
+            age: 30,
+            city: "New York",
+            occupation: "Engineer",
+            company: "TechCorp",
+            phone: "+1 555 1234",
+            email: "john.doe@example.com",
+            address: "123 Elm St",
+            education: "Bachelor's Degree",
+            hobby: "Photography",
+            favorite_food: "Pizza",
+            favorite_color: "Blue",
+            favorite_movie: "Inception",
+            favorite_book: "1984",
+            language: "English",
+            nationality: "American",
+            marital_status: "Single",
+            has_pets: true,
+            children: 0,
+            car: "Tesla Model S"
+        };
+
+        const russianData = {
+            name: "Джон",
+            age: 30,
+            city: "Нью-Йорк",
+            occupation: "Инженер",
+            company: "ТехКорп",
+            phone: "+1 555 1234",
+            email: "john.doe@пример.com",
+            address: "ул. Эльм, 123",
+            education: "Степень бакалавра",
+            hobby: "Фотография",
+            favorite_food: "Пицца",
+            favorite_color: "Синий",
+            favorite_movie: "Начало",
+            favorite_book: "1984",
+            language: "Английский",
+            nationality: "Американец",
+            marital_status: "Не женат",
+            has_pets: true,
+            children: 0,
+            car: "Тесла Модель S"
+        };
+
+
+        function updateContent(languageData) {
+    let contentDiv = document.getElementById('content');
+    Object.keys(languageData).forEach(key => {
+        let div;
+        if (document.getElementById(key)) {
+            div = document.getElementById(key);
+        } else {
+            div = document.createElement('div');
+        }
+        div.id = key;
+        div.textContent = `${languageData[key]}`;
+        contentDiv.appendChild(div);
+    });
+}
+
+        // Function to update the URL with the selected language
+        function setLanguageInUrl(language) {
+            let newUrl = `${window.location.pathname}?lang=${language}`;
+            window.history.pushState({ path: newUrl }, '', newUrl);
+        }
+
+        // Function to get the current language from the URL
+        function getLanguageFromUrl() {
+            return window.location.search.split('=')[1];
+        }
+
+        let currentLang = getLanguageFromUrl();
+
+        // Set initial content based on URL language or default to English
+        if (currentLang === 'ru') {
+            updateContent(russianData);
+        } else {
+            updateContent(englishData);
+        }
+
+        // Event listeners for language switch
+        document.getElementById('engButton').addEventListener('click', function () {
+            updateContent(englishData);
+            setLanguageInUrl('en');
+        });
+
+        document.getElementById('ruButton').addEventListener('click', function () {
+            updateContent(russianData);
+            setLanguageInUrl('ru');
+        });
+    </script>
+
+</body>
+
+</html>
